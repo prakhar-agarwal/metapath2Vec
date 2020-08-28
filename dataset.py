@@ -1,6 +1,5 @@
 import numpy as np
 import random
-# import scipy
 import os
 
 class Dataset(object):
@@ -125,10 +124,8 @@ class Dataset(object):
         sampling_prob = np.zeros(len(index2frequency))
         for i in range(len(index2frequency)):
             sampling_prob[i]=index2frequency[i]
-        sampling_prob = sampling_prob**(3.0/4.0) #from http://mccormickml.com/2017/01/11/word2vec-tutorial-part-2-negative-sampling/
+        sampling_prob = sampling_prob**(3.0/4.0)
 
-        #normalize the distributions
-        #for caring type
         all_types = set(index2type.values())
         type2probs = {}
         for node_type in all_types:
