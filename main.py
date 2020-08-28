@@ -3,6 +3,7 @@ import sys
 import os
 import time
 
+sys.path.append('./code')
 from skipgram import build_model,traning_op,train
 from dataset import Dataset
 
