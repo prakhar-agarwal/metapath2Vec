@@ -15,15 +15,6 @@ def build_model(BATCH_SIZE,VOCAB_SIZE,EMBED_SIZE,NUM_SAMPLED):
             tf.placeholder(tf.float32, shape=[BATCH_SIZE,1], name='true_expected_count'),
             tf.placeholder(tf.float32, shape=[NUM_SAMPLED], name='sampled_expected_count'))
 
-    #https://github.com/tensorflow/tensorflow/blob/624bcfe409601910951789325f0b97f520c0b1ee/tensorflow/python/ops/nn_impl.py#L943-L946
-    # Sample the negative labels.
-    #   sampled shape: [num_sampled] tensor
-    #   true_expected_count shape = [batch_size, 1] tensor
-    #   sampled_expected_count shape = [num_sampled] tensor
-
-    # Assemble this part of the graph on the CPU. You can change it to GPU if you have GPU
-    # define weights. In word2vec, it's actually the weights that we care about
-
     with tf.name_scope('embedding_matrix'):
         embed_matrix = tf.Variable(tf.random_uniform([VOCAB_SIZE, EMBED_SIZE], -1.0, 1.0), 
                             name='embed_matrix')
@@ -132,4 +123,3 @@ def train(center_node_placeholder,context_node_placeholder,negative_samples_plac
 
 if __name__ == '__main__':
     pass
-    #test code  
